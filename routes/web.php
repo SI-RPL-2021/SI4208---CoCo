@@ -33,3 +33,7 @@ Route::get('/hal', function () {
 Route::get('/halnew', function () {
     return view('halnew');
 });
+
+Route::get('/kolaborasiBuat', function () {
+    return view('kolaborasiBuat');
+});
