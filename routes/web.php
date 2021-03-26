@@ -17,10 +17,19 @@ Route::get('/', function () {
     return view('index');
 });
 
+
 Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('/registrasi', function () {
     return view('registrasi');
+});
+
+Route::get('/hal', function () {
+    return view('hal');
+});
+
+Route::get('/halnew', function () {
+    return view('halnew');
 });
