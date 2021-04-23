@@ -18,13 +18,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
-Route::get('/registrasi', function () {
-    return view('registrasi');
-});
+// Route::get('/registrasi', function () {
+//     return view('registrasi');
+// });
 
 Route::get('/hal', function () {
     return view('hal');
@@ -58,5 +58,13 @@ Route::get('/about', function () {
 Route::get('/blank', function () {
     return view('blank');
 })->name('blank');
+
+Route::get('/diskusi', function () {
+    return view('diskusi');
+})->name('diskusi');
+
+Route::get('/event', function () {
+    return view('event');
+})->name('event');
 
 ?>
