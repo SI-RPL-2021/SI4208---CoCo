@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('homepage');
 });
-<<<<<<< HEAD
 
 
 Route::get('/login', function () {
@@ -38,10 +37,10 @@ Route::get('/halnew', function () {
 Route::get('/kolaborasiBuat', function () {
     return view('kolaborasiBuat');
 });
-=======
+
 Route::get('/aboutus', function () {
     return view('aboutus');
-})->name('aboutus');;
+})->name('aboutus');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -59,4 +58,5 @@ Route::get('/about', function () {
 Route::get('/blank', function () {
     return view('blank');
 })->name('blank');
->>>>>>> AFIF
+
+?>
