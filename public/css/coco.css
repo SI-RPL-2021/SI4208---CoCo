@@ -1,0 +1,127 @@
+html,
+body {
+  height: 100vh !important;
+  font-family: poppins !important;
+}
+
+/* Navbar */
+.navbar{
+  background-color: #fd7ec3 !important;
+}
+
+/* Body */
+.pink-background {
+  background-color: #FFEAFF !important;
+  margin: 0px !important;
+}
+
+.middle {
+  height: 100vh !important;
+  background-color: #fcf1ff !important;
+  padding: 0px !important;
+}
+
+.white-background {
+    background-color: white !important;
+}
+
+/* Posting Card */
+.card {
+  border-radius: 25px !important;
+  margin: 30px !important;
+  margin-top: 60px !important;
+  padding: 5px !important;
+}
+
+#tambahfoto:focus {
+  outline: none !important;
+}
+
+.container-left{
+  height: 100%;
+  background-color: #FFF2F9;
+  width: 33%;
+  padding-top: 300px;
+  padding-left: 30px;
+  padding-right: 30px;
+  float: left;
+}
+.container-right{
+  width: 67%;
+  height: 100%;
+  float: left;
+}
+
+    .container1{
+        background-color: #FD7EC2;
+        height:550px;
+    }
+    .container1-left{
+        width: 50%;
+        padding: 60px;
+        padding-top:120px;
+        color: #FFF2F9;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        float: left;
+    }
+    .container1-right{
+        width: 50%;
+        float: left;
+        padding-top:40px;
+    }
+    .container2{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding-top: 50px;
+        padding-left: 300px;
+        padding-right: 300px;
+
+    }
+    .container3{
+        padding-left: 20%;
+        padding-top: 30px;
+        height: 400px;
+    }
+    .container3-left{
+        width: 25%;
+        height: 400px;
+        float: left;
+    }
+    .container3-center{
+        width: 25%;
+        height: 400px;
+        float: left;
+    }
+    .container3-right{
+        width: 25%;
+        height: 400px;
+        float: left;
+    }
+    .container4{
+        height: 200px;
+        background-color: #FD7EC2;
+    }
+
+    .container-sm{
+      background-color: #FD7EC2;
+      margin-left: 100px;
+      margin-right: 100px;
+      height: auto;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .container-2{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+
+    .container-3{
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 20px;
+  }
+
+    .image-event{
+      text-align: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }

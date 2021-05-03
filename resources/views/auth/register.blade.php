@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control col" name="username" placeholder="{{ __('Username') }}" value="{{ old('last_name') }}" required>
+                                        <input type="text" class="form-control col" name="username" placeholder="{{ __('Username') }}" value="{{ old('username') }}" required>
                                     </div>
 
                                     <div class="form-group">
@@ -49,15 +49,14 @@
                                             {{ __('Daftar Sekarang') }}
                                         </button>
                                     </div>
+
+                                    <div class="text-center">
+                                        
+                                        <a class="small" style="color: #FF3BA4;" href="{{ route('login') }}">{{ __('Sudah Punya Akun? Masuk Sekarang!') }}</a>
+                                    </div>
                                 </form>
 
-                               
-
-                                <div class="text-center">
-                                    <a class="small" style="color: #F57ABC" href="{{ route('login') }}">
-                                        {{ __('Sudah Memiliki Akun? Login!') }}
-                                    </a>
-                                </div>
+                        
                             </div>
                         </div>
                     </div>
