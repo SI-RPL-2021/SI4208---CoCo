@@ -61,16 +61,16 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($post as $key => $data)
                 <tr> 
-                    <th></th>  
-                    <th></th>
-                    <th></th>        
+                    <th>{{$data->id}}</th>  
+                    <th>{{$data->story}}</th>
+                    <th>{{$data->created_at}}</th>        
                     <th>
-                        
+                        <a class="btn btn-danger" href = 'delete/{{ $data->id }}'>Delete</a>
                     </th>
                 </tr>
-                 
+                @endforeach  
             </tbody>
         </table>
         

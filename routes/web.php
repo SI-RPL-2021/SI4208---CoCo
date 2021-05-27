@@ -61,6 +61,8 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('delete/{id}','UserDeleteController@destroy');
 
     Route::get('/report_mgt', function () {
+        $post = DB::table('posts')->get();
+        return view('/admin/report_mgt', ['post' => $post]);
         return view('admin/report_mgt');
     })->name('report_mgt');
 });
