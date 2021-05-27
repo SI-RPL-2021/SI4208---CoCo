@@ -28,7 +28,7 @@
                     <a class="nav-link" href="{{ route('user_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('User Management') }}</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="" style="color: #FFF2F9; font-weight :600">Report management</span></a>
+            <a class="nav-link" href="{{ route('report_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('Report Management') }}</span></a>
             </li>
             </ul>
         </div>

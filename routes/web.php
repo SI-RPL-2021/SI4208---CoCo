@@ -59,4 +59,8 @@ Route::group(['middleware'=>'auth'], function() {
     
     Route::get('delete-records','UserDeleteController@index');
     Route::get('delete/{id}','UserDeleteController@destroy');
+
+    Route::get('/report_mgt', function () {
+        return view('admin/report_mgt');
+    })->name('report_mgt');
 });
