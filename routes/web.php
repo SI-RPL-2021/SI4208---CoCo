@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
@@ -48,6 +49,14 @@ Route::group(['middleware'=>'auth'], function() {
     Route::post('/newEvent', [EventController::class, 'newEvent'])->name('newEvent');
 
     Route::get('/admin', function () {
-        return view('/admin/lading_admin');
+        return view('/admin/landing_admin');
     })->name('admin');
+
+    Route::get('/user_mgt', function () {
+        $user = DB::table('users')->get();
+        return view('/admin/user_mgt', ['user' => $user]);
+    })->name('user_mgt');
+    
+    Route::get('delete-records','UserDeleteController@index');
+    Route::get('delete/{id}','UserDeleteController@destroy');
 });

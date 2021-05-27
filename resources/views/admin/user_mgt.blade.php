@@ -25,7 +25,7 @@
             
             <ul class="navbar-nav ml-auto" style="margin-right: 20px;">
             <li class="nav-item">
-                    <a class="nav-link" href="" style="color: #FFF2F9; font-weight :600">User management</span></a>
+                    <a class="nav-link" href="{{ route('user_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('User Management') }}</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="" style="color: #FFF2F9; font-weight :600">Report management</span></a>
@@ -39,7 +39,7 @@
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Logout') }}</a>
-                <a class="dropdown-item" href="{{ route('profil') }}">{{ __('Profil') }}</a>
+                
             </div>
         </div>
     </nav>
@@ -47,7 +47,34 @@
     </div>
 
     <div class="container-main">
-        <h1 style="font-family: 'Courier New', Courier, monospace;font-weight:500;">Selamat datang</h1>
+        <center>
+        <h1 style="font-family: 'Courier New', Courier, monospace;font-weight:500; margin-top:50px; margin-bottom:50px">User Management Dashboard</h1>
+        </center>
+        
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($user as $key => $data)
+                <tr> 
+                    <th>{{$data->id}}</th>  
+                    <th>{{$data->name}}</th>
+                    <th>{{$data->email}}</th>        
+                    <th>
+                        <a class="btn btn-danger" href = 'delete/{{ $data->id }}'>Delete</a>
+                    </th>
+                </tr>
+                @endforeach  
+            </tbody>
+        </table>
+
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
