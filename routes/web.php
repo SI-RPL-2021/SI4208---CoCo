@@ -46,4 +46,8 @@ Route::group(['middleware'=>'auth'], function() {
     // Event Controller
     Route::get('/event', [EventController::class, 'index'])->name('event');
     Route::post('/newEvent', [EventController::class, 'newEvent'])->name('newEvent');
+
+    Route::get('/admin', function () {
+        return view('/admin/lading_admin');
+    })->name('admin');
 });
