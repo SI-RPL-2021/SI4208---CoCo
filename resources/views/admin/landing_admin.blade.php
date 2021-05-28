@@ -28,7 +28,7 @@
                     <a class="nav-link" href="{{ route('user_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('User Management') }}</span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ route('report_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('Report Management') }}</span></a>
+            <a class="nav-link" href="{{ route('report_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('Post Management') }}</span></a>
             </li>
             </ul>
         </div>
@@ -47,7 +47,11 @@
     </div>
 
     <div class="container-main">
-        <h1 style="font-family: 'Courier New', Courier, monospace;font-weight:500;">Selamat datang</h1>
+    <center><h1 style="font-family: 'Courier New', Courier, monospace;font-weight:500; margin-top : 200px">Selamat datang</h1>
+    <a href="{{ route('user_mgt') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px; margin-right:30px">{{ __('User Management') }}</a>
+    <a href="{{ route('report_mgt') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px;">{{ __('Post Management') }}</a>
+    </center>
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
