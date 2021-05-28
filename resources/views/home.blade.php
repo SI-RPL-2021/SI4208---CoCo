@@ -5,7 +5,11 @@
   <!-- left -->
   <div class="col-3 pink-background">
     <center>
-      <img src="{{ url('displayImage/'.$image.'')}}" style="width: 120px; height: 120px; margin-top: 50px" alt="">
+      @if (Route::has('profile'))
+      <a href="{{ route('profile') }}">
+        <img src="{{ url('displayImage/'.$image.'')}}" style="width: 120px; height: 120px; margin-top: 50px" alt="">
+      </a>
+      @endif
       <h3 style="font-style: poppins; margin-top: 20px; font-size:120%"><b>{{$name}}</b></h3>
       <h3 style="font-style: poppins, sans-serif; margin-top: 10px; font-size:100%">{{$username}}</h3>
       <h3 style="font-style: poppins; margin-top: 10px; font-size:100%">xx Following | xx Followers</h3>
@@ -32,7 +36,7 @@
                   <li class="nav-item"><a class="nav-link" href="#">Tambah Foto</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">Undang Orang</a></li>
                   <li class="nav-item ml-auto">
-                    <button type="submit" class="btn btn-primary ml-2">Post</button>
+                    <button type="submit" class="btn btn-primary ml-2 border-0" style="background-color: #FD7EC2;">Post</button>
                   </li>
                 </ul>
               </div>
@@ -41,11 +45,12 @@
         </div>
       </form>
     </div>
+
     <div class="row">
       <section class="container">
         <ul class="nav nav-tabs pt-5">
-          <li class="nav-item"><a class="nav-link active" href="#">Posting</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Karya</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Diskusi</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
         </ul>
       </section>
     </div>
@@ -68,28 +73,73 @@
         @endforeach -->
       <!-- End Show Post Data-->
 
-      <!-- Start Show Post Data-->
+      <!-- Start Show Post Data DISKUSI-->
       <ul class="panel-activity__list">
         @foreach ($posts as $post)
         <div class="row">
           <i class="activity__list__icon fa fa-question-circle-o"></i>
           <div class="activity__list__header">
             <img src="{{ url('displayImage/'.$post->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-            <a href="#">{{$post->users[0]->name }}</a> Posted the question: <a href="#">{{ $post->story }}</a>
+            <a href="#" style="color: #FD7EC2; font-size:medium">{{$post->users[0]->name }}</a>
+            <br><a href="#" style="color: black; font-size:large;">{{ $post->story }}</a>
           </div>
           <div class="activity__list__body entry-content">
             <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
             <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
           </div>
-          <div class="activity__list__footer">
-            <a href="#"> <i class="fa fa-thumbs-up"></i>Like</a>
-            <a href="#"> <i class="fa fa-comments"></i>Comment</a>
-            <span> <i class="fa fa-clock"></i>2 hours ago</span>
+          <br>
+          <div class="container">
+            <a href="#" style="color: #FD7EC2;"> <i class="fa fa-thumbs-up"></i>Like</a>
+            <a href="#" style="color: #FD7EC2;"> <i class="fa fa-comments"></i>Comment</a>
+            <div class="align-bottom ml-auto" style="float:right;">
+              <span style="color:grey;"> <i class="fa fa-clock"></i>a minute ago</span>
+            </div>
           </div>
+
         </div>
         @endforeach
-        <!-- End Show Post Data-->
       </ul>
+      <!-- End Show Post Data-->
+
+      <!-- Start Show Post Data DISKUSI-->
+      <ul class="panel-activity__list">
+        @foreach ($events as $event)
+        <div class="row">
+          <i class="activity__list__icon fa fa-question-circle-o"></i>
+          <div class="activity__list__header container2-left">
+            @if (Route::has('eventSaya'))
+            <br>
+            <a href="{{ route('eventSaya') }}" style="color: black; font-size:large;">
+              {{ $event->event_name }}
+            </a>
+            @endif
+          </div>
+          <div class='container2-right'>
+            <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Daftar</button>
+          </div>
+          <div>
+            <div class="activity__list__body entry-content">
+              <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
+            <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
+            </div>
+            <br>
+            <div class="align-bottom">
+              <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
+              <div class="ml-auto" style="float:right;">
+                <span style="color:grey;"></i>dibuat oleh:
+                  <img src="{{ url('displayImage/'.$post->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                </span>
+              </div>
+            </div>
+          </div>
+          @endforeach
+      </ul>
+      <!-- End Show Post Data-->
+
+      <!-- Start Show Post Data EVENT-->
+
+      <!-- End Show Post Data-->
+
     </div>
   </div>
 
@@ -106,13 +156,18 @@
             </div>
           </div>
         </div>
+
+        <!-- Button Buat Event -->
+        @if (Route::has('event'))
+        <div class="col-2 fixed-bottom">
+          <img src="img/bubble_event.png" style="width: 70%; margin-left: 560%" alt="">
+          <a href="{{ route('event') }}">
+            <img src="img/buat_event.png" style="width: 40%; margin-left: 625%" alt="">
+          </a>
+        </div>
+        @endif
+
       </div>
     </div>
-  </div>
-
-  <div class="ml-4 mt-8">
-    <a href="#">
-      <img src="public\img\buat_event.png">
-    </a>
   </div>
   @endsection

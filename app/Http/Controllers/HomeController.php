@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Posts;
+use App\Models\Events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,11 +21,13 @@ class HomeController extends Controller
         $username = $user['username'];
         $image = $user['images_id'];
         $posts = $this->getAllPost();
+        $events = $this->getAllEvents();
         return view('home', [
             'name'=>$name,
             'username'=>$username,
             'image'=>$image,
-            'posts'=>$posts
+            'posts'=>$posts,
+            'events'=>$events
         ]);
     }
 
@@ -49,5 +52,11 @@ class HomeController extends Controller
     public function getAllPost() {
         $posts = Posts::all();
         return $posts;
+    }
+
+    public function getAllEvents()
+    {
+        $events = Events::all();
+        return $events;
     }
 }

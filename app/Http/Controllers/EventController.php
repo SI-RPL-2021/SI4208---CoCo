@@ -11,15 +11,21 @@ use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function index() {
-        return view('event');
+    public function index()
+    {
+        $events = $this->getAllEvents();
+        return view('home', [
+            'event'=>$events
+        ]);
     }
 
-    public function newEvent(Request $request) {
+    public function newEvent(Request $request)
+    {
         $user = Auth::user();
         $event = new Events;
         $event->event_name = $request['event_name'];
@@ -29,11 +35,12 @@ class EventController extends Controller
         $event->capacity = $request['capacity'];
         $event->users_id = $user['id'];
         $event->save();
-        return $event;
+        return redirect('home');
     }
 
-    public function getAllPost() {
-        $event = Posts::all();
-        return $event;
+    public function getAllEvents()
+    {
+        $events = Events::all();
+        return $events;
     }
 }

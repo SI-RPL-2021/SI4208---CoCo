@@ -45,6 +45,10 @@ class Users extends Authenticatable
         return $this->hasMany('App\Models\Images','id');
     }
 
+    public function profile() {
+        return $this->hasMany('App\Models\Users','id');
+    }
+
     public function posts() {
         return $this->belongsTo('App\Models\Posts');
     }
@@ -57,8 +61,8 @@ class Users extends Authenticatable
         return $this->belongsTo('App\Models\Comments');
     }
 
-    public function events_posts() {
-        return $this->belongsTo('App\Models\Events_Posts');
+    public function events() {
+        return $this->belongsTo('App\Models\Events');
     }
 
     public function events_tags() {
