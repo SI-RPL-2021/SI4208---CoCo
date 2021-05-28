@@ -35,10 +35,6 @@ Route::get('/eventDetail', function () {
     return view('eventDetail');
 })->name('eventDetail');
 
-// Route::get('/profile', function(){
-//     return view('profile');
-// })->name('profile');
-
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');;
 
