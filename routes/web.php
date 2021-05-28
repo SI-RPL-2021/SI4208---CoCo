@@ -30,6 +30,9 @@ Route::get('/tentang', function () {
     return view('tentang');
 })->name('tentang');
 
+Route::get('/chat', function () {
+    return view('chat');
+})->name('chat');
 
 Route::get('/eventDetail', function () {
     return view('eventDetail');
