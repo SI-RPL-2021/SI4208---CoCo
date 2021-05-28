@@ -46,6 +46,7 @@
       </form>
     </div>
 
+
     <div class="row">
       <section class="container">
         <ul class="nav nav-tabs pt-5">
@@ -81,7 +82,12 @@
           <div class="activity__list__header">
             <img src="{{ url('displayImage/'.$post->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
             <a href="#" style="color: #FD7EC2; font-size:medium">{{$post->users[0]->name }}</a>
-            <br><a href="#" style="color: black; font-size:large;">{{ $post->story }}</a>
+            @if (Route::has('diskusi'))
+            <br>
+            <a href="{{ route('diskusi') }}" style="color: black; font-size:large;">
+              {{ $post->story }}
+            </a>
+            @endif
           </div>
           <div class="activity__list__body entry-content">
             <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
@@ -107,9 +113,9 @@
         <div class="row">
           <i class="activity__list__icon fa fa-question-circle-o"></i>
           <div class="activity__list__header container2-left">
-            @if (Route::has('eventSaya'))
+            @if (Route::has('kolaborasi'))
             <br>
-            <a href="{{ route('eventSaya') }}" style="color: black; font-size:large;">
+            <a href="{{ route('kolaborasi') }}" style="color: black; font-size:large;">
               {{ $event->event_name }}
             </a>
             @endif

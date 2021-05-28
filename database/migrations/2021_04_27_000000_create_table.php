@@ -45,7 +45,7 @@ class CreateTable extends Migration
         });
 
         Schema::create('posts', function(Blueprint $table) {
-            $table->increments('id');
+            $table->range('id')->default(1);
             $table->text('story');
             $table->integer('images_id')->nullable()->unsigned()->index();
             $table->integer('users_id')->unsigned()->index();
