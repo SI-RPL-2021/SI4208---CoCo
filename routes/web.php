@@ -34,6 +34,10 @@ Route::get('/chat', function () {
     return view('chat');
 })->name('chat');
 
+Route::get('/eventSaya', function () {
+    return view('eventSaya');
+})->name('eventSaya');
+
 Route::get('/eventDetail', function () {
     return view('eventDetail');
 })->name('eventDetail');
