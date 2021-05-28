@@ -54,9 +54,9 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                <th scope="col">Report ID</th>
-                <th scope="col">Reported Content</th>
-                <th scope="col">Reported at</th>
+                <th scope="col">Post ID</th>
+                <th scope="col">Post Content</th>
+                <th scope="col">Posted at</th>
                 <th scope="col">Action</th>
                 </tr>
             </thead>

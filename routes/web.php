@@ -60,6 +60,9 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('delete-records','UserDeleteController@index');
     Route::get('delete/{id}','UserDeleteController@destroy');
 
+    Route::get('delete-records','PostDeleteController@index');
+    Route::get('delete/{id}','PostDeleteController@destroy');
+
     Route::get('/report_mgt', function () {
         $post = DB::table('posts')->get();
         return view('/admin/report_mgt', ['post' => $post]);
