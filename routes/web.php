@@ -42,6 +42,14 @@ Route::get('/eventDetail', function () {
     return view('eventDetail');
 })->name('eventDetail');
 
+Route::get('/diskusi', function () {
+    return view('diskusi');
+})->name('diskusi');
+
+Route::get('/kolaborasi', function () {
+    return view('kolaborasi');
+})->name('kolaborasi');
+
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');;
 
