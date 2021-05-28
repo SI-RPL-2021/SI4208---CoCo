@@ -67,7 +67,7 @@
                     <th>{{$data->story}}</th>
                     <th>{{$data->created_at}}</th>        
                     <th>
-                        <a class="btn btn-danger" href = 'delete/{{ $data->id }}'>Delete</a>
+                        <a class="btn btn-danger" href = 'deletep/{{ $data->id }}'>Delete</a>
                     </th>
                 </tr>
                 @endforeach  
