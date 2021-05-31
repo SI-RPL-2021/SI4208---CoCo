@@ -30,6 +30,7 @@ class CreateTable extends Migration
             $table->string('name');
             $table->string('username');
             $table->string('email');
+            $table->boolean('is_admin')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -45,7 +46,7 @@ class CreateTable extends Migration
         });
 
         Schema::create('posts', function(Blueprint $table) {
-            $table->range('id')->default(1);
+            $table->increments('id');
             $table->text('story');
             $table->integer('images_id')->nullable()->unsigned()->index();
             $table->integer('users_id')->unsigned()->index();

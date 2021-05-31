@@ -49,6 +49,7 @@ class HomeController extends Controller
         return redirect('home');
     }
 
+
     public function getAllPost() {
         $posts = Posts::all();
         return $posts;
