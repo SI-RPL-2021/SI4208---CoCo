@@ -72,7 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Profile Controller
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    // Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('edit/{id}','ProfileController@edit');
 
     Route::get('/admin', function () {
         return view('/admin/landing_admin');

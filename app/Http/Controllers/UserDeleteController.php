@@ -13,7 +13,7 @@ class UserDeleteController extends Controller {
         return view('stud_delete_view',['users'=>$user]);
     }
     public function destroy($id) {
-        DB::delete('delete from users where id = ?',[$id]);
+        DB::delete('delete from users where id = ?',[$id]); //delete diganti sbg insert
         echo "Record deleted successfully.<br/>";
         echo '<a href = "/user_mgt">Click Here</a> to go back.';
     }
