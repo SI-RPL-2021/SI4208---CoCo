@@ -44,9 +44,10 @@
         
     <div class="container-tengah" style="float:left; width:50%;margin-top:50px">
         <center>
+            <br><br><br>
             <img src="img/chat.png" style="width: 250px; height: 200px" alt="">
             <h3 style="font-weight: bold; color: #EF2A82;">Tidak Ada Pesan Disini</h3>
-
+            <br><br><br><br>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="kirim pesan..." id="floatingTextarea2" style="height: 45px; float:left;width: 90%;"></textarea>
                 
@@ -59,7 +60,7 @@
         <form class="form-inline">
             <div class="form-group mx-sm-3 mb-2">
                 <label for="inputPassword2" class="sr-only">Cari Teman</label>
-                <input type="text" class="form-control" id="inputPassword2" placeholder="Password">
+                <input type="text" class="form-control" id="inputPassword2" placeholder="Cari Teman">
             </div>
             <button type="submit" class="btn btn-light mb-2" style="background-color:#FD7EC2; color:#FFF2F9;">Cari</button>
         </form>
