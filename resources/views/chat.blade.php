@@ -57,10 +57,11 @@
 
     <div class="container-kanan" style="float:left; width:25%;margin-top:50px">
         <img src="img/joey.jpg" style="width: 50px; height: 50px; border-radius:50%; float:left;">
-        <label style=" float:left; text-indent: 2em;"><b>Joey King</b>
+        <label style=" text-indent: 2em;"><b>Joey King</b>
             <p>@joeyjoy</p>
         </label>
         <br>
+
         <img src="img/noah.jpg" style="width: 50px; height: 50px; border-radius:50%;">
         <label style="text-indent: 2em;"><b>Noah</b>
             <p>@noahahaha</p>
