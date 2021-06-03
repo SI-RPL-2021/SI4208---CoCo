@@ -56,6 +56,14 @@
     </div>
 
     <div class="container-kanan" style="float:left; width:25%;margin-top:50px">
+        <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">Cari Teman</label>
+                <input type="text" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-light mb-2" style="background-color:#FD7EC2; color:#FFF2F9;">Cari</button>
+        </form>
+
         <img src="img/joey.jpg" style="width: 50px; height: 50px; border-radius:50%; float:left;">
         <label style=" text-indent: 2em;"><b>Joey King</b>
             <p>@joeyjoy</p>
