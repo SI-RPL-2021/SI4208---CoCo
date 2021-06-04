@@ -19,7 +19,7 @@ class EventController extends Controller
     public function index()
     {
         $events = $this->getAllEvents();
-        return view('home', [
+        return view('event', [
             'event'=>$events
         ]);
     }
