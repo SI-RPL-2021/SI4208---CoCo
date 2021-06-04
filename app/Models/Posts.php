@@ -33,11 +33,11 @@ class Posts extends Model
     }
 
     public function users() {
-        return $this->hasMany('App\Models\Users','id');
+        return $this->belongsTo('App\Models\Users');
     }
 
     public function comments() {
-        return $this->belongsTo('App\Models\Comments');
+        return $this->hasMany('App\Models\Comments');
     }
 
     public function tags() {

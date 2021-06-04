@@ -64,8 +64,8 @@
       <!-- @foreach ($posts as $post)
             <div class="row">
               <div class="col-4">
-                <img src="{{ url('displayImage/'.$post->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-                {{ $post->users[0]->name }}
+                <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                {{ $post->users->name }}
               </div>
               <div class="col-8">
                 {{ $post->story }}
@@ -80,11 +80,11 @@
         <div class="row">
           <i class="activity__list__icon fa fa-question-circle-o"></i>
           <div class="activity__list__header">
-            <img src="{{ url('displayImage/'.$post->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-            <a href="#" style="color: #FD7EC2; font-size:medium">{{$post->users[0]->name }}</a>
+            <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+            <a href="#" style="color: #FD7EC2; font-size:medium">{{$post->users->name }}</a>
             @if (Route::has('diskusi'))
             <br>
-            <a href="{{ route('diskusi') }}" style="color: black; font-size:large;">
+            <a href="{{ url('diskusi/'.$post->id) }}" style="color: black; font-size:large;">
               {{ $post->story }}
             </a>
             @endif
@@ -133,7 +133,7 @@
               <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
               <div class="ml-auto" style="float:right;">
                 <span style="color:grey;"></i>dibuat oleh:
-                  <img src="{{ url('displayImage/'.$post->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                  <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
                 </span>
               </div>
             </div>

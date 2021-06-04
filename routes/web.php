@@ -42,9 +42,8 @@ Route::get('/eventDetail', function () {
     return view('eventDetail');
 })->name('eventDetail');
 
-Route::get('/diskusi', function () {
-    return view('diskusi');
-})->name('diskusi');
+// post detail
+Route::get('/diskusi/{id}', "PostController@detail")->name('diskusi');
 
 Route::get('/kolaborasi', function () {
     return view('kolaborasi');
@@ -72,8 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Profile Controller
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    // Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
-    Route::post('edit/{id}','ProfileController@edit');
+    Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 
     Route::get('/admin', function () {
         return view('/admin/landing_admin');
@@ -95,4 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('/admin/report_mgt', ['post' => $post]);
         return view('admin/report_mgt');
     })->name('report_mgt');
+
+    // comment post
+    Route::post('/diskusi/{id}/comment', "PostController@comment");
 });

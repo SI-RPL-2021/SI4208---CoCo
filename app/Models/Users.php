@@ -42,7 +42,7 @@ class Users extends Authenticatable
     }
 
     public function images() {
-        return $this->hasMany('App\Models\Images','id');
+        return $this->hasOne('App\Models\Images');
     }
 
     public function profile() {
@@ -50,7 +50,7 @@ class Users extends Authenticatable
     }
 
     public function posts() {
-        return $this->belongsTo('App\Models\Posts');
+        return $this->hasMany('App\Models\Posts');
     }
 
     public function tags() {

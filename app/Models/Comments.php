@@ -18,7 +18,7 @@ class Comments extends Model
     protected $fillable = [
         'posts_id',
         'users_id',
-        'comment',
+        'comments',
         'created_at',
         'updated_at'
     ];
@@ -29,10 +29,10 @@ class Comments extends Model
     }
 
     public function posts() {
-        return $this->hasMany('App\Models\Posts','id');
+        return $this->belongsTo('App\Models\Posts');
     }
 
     public function users() {
-        return $this->hasMany('App\Models\Users','id');
+        return $this->belongsTo('App\Models\Users');
     }
 }
