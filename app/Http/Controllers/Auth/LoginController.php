@@ -26,19 +26,36 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+        // $request->validate([
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
+
+        // $credentials = $request->only('email', 'password');
+
+        // if (Auth::attempt($credentials)) {
+        //     return redirect()->intended('home');
+        // }
+
+        // return back()->withErrors([
+        //     'email' => 'E-mail atau password salah.',
+        // ]);
+
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
-
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('home');
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->is_admin == 1) {
+                return redirect()->route('admin');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
         }
-
-        return back()->withErrors([
-            'email' => 'E-mail atau password salah.',
-        ]);
     }
 }

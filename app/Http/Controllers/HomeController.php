@@ -60,4 +60,8 @@ class HomeController extends Controller
         $events = Events::all();
         return $events;
     }
+    public function adminHome()
+    {
+        return view('admin/landing_admin');
+    }
 }

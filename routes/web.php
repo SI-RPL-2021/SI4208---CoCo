@@ -73,9 +73,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 
-    Route::get('/admin', function () {
-        return view('/admin/landing_admin');
-    })->name('admin');
+    // Route::get('/admin', function () {
+    //     return view('/admin/landing_admin');
+    // })->name('admin');
 
     Route::get('/user_mgt', function () {
         $user = DB::table('users')->get();
@@ -96,4 +96,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // comment post
     Route::post('/diskusi/{id}/comment', "PostController@comment");
+
+    Route::get('/admin', [HomeController::class, 'adminHome'])->name('admin')->middleware('is_admin');
 });
