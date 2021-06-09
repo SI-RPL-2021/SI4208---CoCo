@@ -54,28 +54,83 @@
         <h1 style="font-family: 'Courier New', Courier, monospace;font-weight:500; margin-top:50px; margin-bottom:50px">User Management Dashboard</h1>
         </center>
         
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                <th scope="col">User ID</th>
-                <th scope="col">Username</th>
-                <th scope="col">Email</th>
-                <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($user as $key => $data)
-                <tr> 
-                    <th>{{$data->id}}</th>  
-                    <th>{{$data->name}}</th>
-                    <th>{{$data->email}}</th>        
-                    <th>
-                        <a class="btn btn-danger" href = 'delete/{{ $data->id }}'>Delete</a>
-                    </th>
-                </tr>
-                @endforeach  
-            </tbody>
-        </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register new user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('register') }}" class="user">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control col" name="name" placeholder="{{ __('Nama') }}" value="{{ old('name') }}" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control col" name="username" placeholder="{{ __('Username') }}" value="{{ old('username') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control col" name="email" placeholder="{{ __('E-Mail') }}" value="{{ old('email') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control col" name="password" placeholder="{{ __('Masukkan Password') }}" required>
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >
+                    {{ __('Save') }}
+                </button>
+            </div>
+            </form>
+            </div>
+        </div>
+        </div>
+        <div style="padding:2%">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            Add User
+            </button>
+            <table class="table" style="margin-top:20px">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($user as $key => $data)
+                    <tr> 
+                        <th>{{$data->id}}</th>  
+                        <th>{{$data->name}}</th>
+                        <th>{{$data->email}}</th>     
+                        <th>
+                            @if ($data->is_admin == 1)
+                                admin
+                            @else
+                                user
+                            @endif
+                        </th>
+                        <th>
+                            <a class="btn btn-danger" href = 'delete/{{ $data->id }}'>Delete</a>
+                        </th>
+                    </tr>
+                    @endforeach  
+                </tbody>
+            </table>
+        </div>
 
         
     </div>
