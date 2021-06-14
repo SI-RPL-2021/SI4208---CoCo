@@ -25,7 +25,7 @@ class Events_Tags extends Model
         
     }
 
-    public function posts() {
+    public function events() {
         return $this->hasMany('App\Models\Events','id');
     }
 

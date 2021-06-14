@@ -107,43 +107,44 @@
       </ul>
       <!-- End Show Post Data-->
 
-      <!-- Start Show Post Data DISKUSI-->
-      <ul class="panel-activity__list">
-        @foreach ($events as $event)
-        <div class="row">
-          <i class="activity__list__icon fa fa-question-circle-o"></i>
-          <div class="activity__list__header container2-left">
-            @if (Route::has('kolaborasi'))
-            <br>
-            <a href="{{ route('kolaborasi') }}" style="color: black; font-size:large;">
-              {{ $event->event_name }}
-            </a>
-            @endif
-          </div>
-          <div class='container2-right'>
-            <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Daftar</button>
-          </div>
-          <div>
-            <div class="activity__list__body entry-content">
-              <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
-            <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
+      <!-- Start Show Post Data EVENT-->
+      <form method="POST" action="{{ route('daftarEvent') }}">
+
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        <ul class="panel-activity__list">
+          @foreach ($events as $event)
+          <div class="row">
+            <i class="activity__list__icon fa fa-question-circle-o"></i>
+            <div class="activity__list__header container2-left">
+              @if (Route::has('kolaborasi'))
+              <br>
+              <a href="{{ route('kolaborasi') }}" style="color: black; font-size:large;">
+                {{ $event->event_name }}
+              </a>
+              @endif
             </div>
-            <br>
-            <div class="align-bottom">
-              <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
-              <div class="ml-auto" style="float:right;">
-                <span style="color:grey;"></i>dibuat oleh:
-                  <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-                </span>
+            <div class='container2-right'>
+              <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Daftar</button>
+            </div>
+            <div>
+              <div class="activity__list__body entry-content">
+                <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
+            <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
+              </div>
+              <br>
+              <div class="align-bottom">
+                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
+                <div class="ml-auto" style="float:right;">
+                  <span style="color:grey;"></i>dibuat oleh: {{$post->users->name }}
+                    <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-          @endforeach
-      </ul>
-      <!-- End Show Post Data-->
-
-      <!-- Start Show Post Data EVENT-->
-
+            @endforeach
+        </ul>
+      </form>
       <!-- End Show Post Data-->
 
     </div>

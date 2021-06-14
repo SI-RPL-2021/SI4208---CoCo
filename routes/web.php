@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/displayImage/{id}', [HomeController::class, 'displayImage'])->whereNumber('id')->name('displayImage');
     Route::post('/newPost', [HomeController::class, 'newPost'])->name('newPost');
+    Route::post('/daftarEvent', [HomeController::class, 'daftarEvent'])->name('daftarEvent');
 
     // Event Controller
     Route::get('/event', [EventController::class, 'index'])->name('event');
