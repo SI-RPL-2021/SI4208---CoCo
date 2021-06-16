@@ -3,6 +3,7 @@
 @section('main-content')
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,18 +42,20 @@
         </label>
 
     </div>
-        
+
     <div class="container-tengah" style="float:left; width:50%;margin-top:50px">
         <center>
             <br><br><br>
             <img src="img/chat.png" style="width: 250px; height: 200px" alt="">
             <h3 style="font-weight: bold; color: #EF2A82;">Tidak Ada Pesan Disini</h3>
             <br><br><br><br>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="kirim pesan..." id="floatingTextarea2" style="height: 45px; float:left;width: 90%;"></textarea>
-                
-                <button type="submit" style="background-color: #EF2A82; color: white; float:left; margin-left:10px" name="kirim">Kirim</button>
-            </div>
+            <form method="POST" action="{{ route('inbox') }}">
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="kirim pesan..." id="floatingTextarea2" style="height: 45px; float:left;width: 90%;"></textarea>
+
+                    <button type="submit" style="background-color: #EF2A82; color: white; float:left; margin-left:10px" name="kirim">Kirim</button>
+                </div>
+            </form>
         </center>
     </div>
 
@@ -97,4 +100,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 </body>
 @endsection
+
 </html>

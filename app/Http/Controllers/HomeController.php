@@ -54,7 +54,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $events = Events::all();
         $events_tags = new Events_Tags;
-        $events_tags->events_id = $events['id'];
+        $events_tags->events_id = $user['id'];
         $events_tags->users_id = $user['id'];
         $events_tags->save();
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\USerChartController;
@@ -31,9 +32,9 @@ Route::get('/tentang', function () {
     return view('tentang');
 })->name('tentang');
 
-Route::get('/chat', function () {
-    return view('chat');
-})->name('chat');
+// Route::get('/chat', function () {
+//     return view('chat');
+// })->name('chat');
 
 Route::get('/eventSaya', function () {
     return view('eventSaya');
@@ -74,6 +75,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Profile Controller
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+
+    // Chat Controller
+    Route::get('/chat', [ChatController::class, 'inbox'])->name('chat');
+    Route::post('/inbox', [ChatController::class, 'inbox'])->name('inbox');
 
     // Route::get('/admin', function () {
     //     return view('/admin/landing_admin');

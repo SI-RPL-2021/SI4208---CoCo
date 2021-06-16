@@ -10,6 +10,8 @@ class Events_Tags extends Model
 {
     use HasFactory, Notifiable;
 
+    public $events_tags = "events_tags";
+
     /**
      * The attributes that are mass assignable.
      *
