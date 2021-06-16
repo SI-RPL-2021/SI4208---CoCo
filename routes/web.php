@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\USerChartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
@@ -104,4 +105,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/diskusi/{id}/comment', "PostController@comment");
 
     Route::get('/admin', [HomeController::class, 'adminHome'])->name('admin')->middleware('is_admin');
+
+    Route::get('/dashboard', [UserChartController::class, 'index'])->name('dashboard');
+
+    // Route::get('/dashboard', function () {
+    //     return view('admin/dashboard');
+    // })->name('dashboard');
 });

@@ -31,6 +31,9 @@
             <a class="nav-link" href="{{ route('report_mgt') }}" style="color: #FFF2F9; font-weight :600">{{ __('Post Management') }}</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard') }}" style="color: #FFF2F9; font-weight :600">{{ __('Dashboard') }}</span></a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href="{{ route('admin') }}" style="color: #FFF2F9; font-weight :600">{{ __('Home') }}</span></a>
             </li>
             </ul>
