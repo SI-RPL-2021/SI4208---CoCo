@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use App\Models\Events;
 use App\Models\Events_Tags;
+use App\Models\EventsTags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,15 +51,17 @@ class HomeController extends Controller
         return redirect('home');
     }
 
-    public function daftarEvent(){
+    public function daftarEvent(Request $request){
         $user = Auth::user();
-        $events = Events::all();
-        $events_tags = new Events_Tags;
-        $events_tags->events_id = $user['id'];
+        // $events = Events::all();
+        $events_tags = new EventsTags;
+        $events_tags->events_id = $request['events_id'];
         $events_tags->users_id = $user['id'];
         $events_tags->save();
 
         // return redirect('home');
+        // echo @event('id');
+        // echo $request['events_id'];
         echo "Daftar sukses";
     }
 
