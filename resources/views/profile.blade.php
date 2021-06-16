@@ -11,8 +11,6 @@
         <!-- INSERT PHOTO HERE -->
         <div class="container-3" style="background-color: #FFFFFF;">
             <div class="col-auto">
-                <form action="/edit/<?php echo $users[0]->id; ?>" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <!-- INSERT PHOTO -->
                     <div class="image-event">
                         <a href="">
@@ -38,7 +36,6 @@
                     <br>
                     <button type="submit" class="btn" style="float: right; background-color:#F57ABC; color:white;"><b>Simpan</b></button>
                     <br>
-                </form>
             </div>
         </div>
     </div>

@@ -14,10 +14,18 @@ class CreateChatTable extends Migration
     public function up()
     {
         Schema::create('chat', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->text('inbox')->nullable();
+            $table->integer('users_id')->unsigned()->index();
+            $table->foreign('users_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.
