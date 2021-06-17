@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -47,7 +47,9 @@ Route::get('/eventDetail', function () {
 // post detail
 Route::get('/diskusi/{id}', "PostController@detail")->name('diskusi');
 
-Route::get('/kolaborasi/{id}', [HomeController::class, 'kolaborasi'])->name('kolaborasi');
+Route::get('/kolaborasi', function () {
+    return view('kolaborasi');
+})->name('kolaborasi');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');;
@@ -64,11 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/displayImage/{id}', [HomeController::class, 'displayImage'])->whereNumber('id')->name('displayImage');
     Route::post('/newPost', [HomeController::class, 'newPost'])->name('newPost');
     Route::post('/daftarEvent', [HomeController::class, 'daftarEvent'])->name('daftarEvent');
-    Route::post('/newComment', [HomeController::class, 'newComment'])->name('newComment');
-    Route::post('/newComment_event', [HomeController::class, 'newComment_event'])->name('newComment_event');
-    Route::post('/deleteComment', [HomeController::class, 'deleteComment'])->name('deleteComment');
-    Route::post('/deleteComment_event', [HomeController::class, 'deleteComment_event'])->name('deleteComment_event');
-    
+
     // Event Controller
     Route::get('/event', [EventController::class, 'index'])->name('event');
     Route::post('/newEvent', [EventController::class, 'newEvent'])->name('newEvent');
@@ -113,4 +111,26 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/dashboard', function () {
     //     return view('admin/dashboard');
     // })->name('dashboard');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //report content
+    Route::get('/report', [ReportController::class, 'index'])->name('report');
+
 });

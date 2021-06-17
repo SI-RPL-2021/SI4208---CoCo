@@ -78,6 +78,9 @@
                                 <a class="dropdown-item" style="color: #FD7EC2; font-weight :600" href="{{ route('logout') }}">
                                     {{ __('Logout') }}
                                 </a>
+                                <a class="dropdown-item" style="color: #FD7EC2; font-weight :600" href="{{ route('logout') }}">
+                                    {{ __('Report') }}
+                                </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
