@@ -25,15 +25,25 @@
                         <br> <br>
                         <font style=font-weight:bolder;color:#000000>Diskusi</font>
                 </div>
-                @foreach($post->comments as $comment)
-                <div class="media">
-                    <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg" alt="Avatar">
-                    <div class="media-body">
-                        <h5 class="mt-0 font-weight-bold blue-text">{{$comment->users->name}}</h5>
-                        {{$comment->comments}}
+                <div class="container">
+                    @foreach($post->comments as $comment)
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0 font-weight-bold blue-text">{{$comment->users->name}}</h5>
+                            {{$comment->comments}}
+                        </div>
                     </div>
+                    @if($user_id == $comment->users_id)
+                    <div class="d-flex justify-content-end">
+                        <form action="{{route('deleteComment')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$comment->id}}">
+                            <button type="submit" class="btn btn-primary" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Delete Comment</button>
+                        </form>
+                    </div>
+                    @endif
+                    @endforeach
                 </div>
-                @endforeach
             </div>
 
         </div>
@@ -45,7 +55,7 @@
                 <input type="text" name="comment" class="form-control" placeholder="comment ...." />
             </div>
             <div class="col-md-2 col-sm-2 col-2 pl-0 text-center send-btn">
-            <button style="float:right;background-color:#FD7EC2; color:#FFF2F9;" class="btn" >Kirim</button>
+                <button style="float:right;background-color:#FD7EC2; color:#FFF2F9;" class="btn">Kirim</button>
             </div>
         </form>
     </div>

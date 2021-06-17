@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class Events_Comments extends Model
 {
     use HasFactory, Notifiable;
-
+    protected $table = "events_comments";
     /**
      * The attributes that are mass assignable.
      *

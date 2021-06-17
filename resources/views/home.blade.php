@@ -74,8 +74,8 @@
         @endforeach -->
       <!-- End Show Post Data-->
 
-      <!-- Start Show Post Data DISKUSI-->
-      <ul class="panel-activity__list">
+     <!-- Start Show Post Data DISKUSI-->
+     <ul class="panel-activity__list">
         @foreach ($posts as $post)
         <div class="row">
           <i class="activity__list__icon fa fa-question-circle-o"></i>
@@ -96,10 +96,30 @@
           <br>
           <div class="container">
             <a href="#" style="color: #FD7EC2;"> <i class="fa fa-thumbs-up"></i>Like</a>
-            <a href="#" style="color: #FD7EC2;"> <i class="fa fa-comments"></i>Comment</a>
-            <div class="align-bottom ml-auto" style="float:right;">
+            @foreach($comments as $cs)
+            @if($cs->posts_id == $post->id)
+            @foreach($users as $us)
+            @if($us->id == $cs->users_id)
+            <br>
+            <!-- <p><b>{{$us->name}}</b></p> -->
+            @endif
+            @endforeach
+            @endif
+            @endforeach
+            <!-- <p>{{$cs->comments}}</p> -->
+            <!-- <form action="{{route('newComment')}}" method="post">
+              @csrf
+              <input type="hidden" name="user_id" value="{{$user_id}}">
+              <input type="hidden" name="id" value="{{$post->id}}">
+              <input type="text" id="" name="comments" class="form-control mr-2" placeholder="Comment..">
+              <div class='text-right'>
+                <button type="submit" class="btn btn-primary mt-4" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Comment</button>
+              </div>
+            </form> -->
+            <!-- <a href="#" style="color: #FD7EC2;"> <i class="fa fa-comments"></i>Comment</a> -->
+            <!-- <div class="align-bottom ml-auto" style="float:right;">
               <span style="color:grey;"> <i class="fa fa-clock"></i>a minute ago</span>
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -123,7 +143,7 @@
             <div class="activity__list__header container2-left">
               @if (Route::has('kolaborasi'))
               <br>
-              <a href="{{ route('kolaborasi') }}" style="color: black; font-size:large;">
+              <a href="{{route('kolaborasi', $event->id)}}" style="color: black; font-size:large;">
                 {{ $event->event_name }}
               </a>
             </div>
@@ -148,38 +168,39 @@
             </div>
           </div>
         </div>
-        @endforeach
-      </ul>
-      <!-- End Show Post Data-->
-
     </div>
-  </div>
+    @endforeach
+    </ul>
+    <!-- End Show Post Data-->
 
-  <!-- right -->
-  <div class="col-3 pink-background">
-    <div class="d-none d-xl-block mr-2 mt-5 right-wrapper">
-      <div class="row">
-        <div class="col-md-12 grid-margin">
-          <div class="card rounded">
-            <div class="card-body">
-              <h6 class="card-title">Trending</h6>
-              <div class="latest-photos">
-              </div>
+  </div>
+</div>
+
+<!-- right -->
+<div class="col-3 pink-background">
+  <div class="d-none d-xl-block mr-2 mt-5 right-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="card rounded">
+          <div class="card-body">
+            <h6 class="card-title">Trending</h6>
+            <div class="latest-photos">
             </div>
           </div>
         </div>
-
-        <!-- Button Buat Event -->
-        @if (Route::has('event'))
-        <div class="col-2 fixed-bottom">
-          <img src="img/bubble_event.png" style="width: 70%; margin-left: 560%" alt="">
-          <a href="{{ route('event') }}">
-            <img src="img/buat_event.png" style="width: 40%; margin-left: 625%" alt="">
-          </a>
-        </div>
-        @endif
-
       </div>
+
+      <!-- Button Buat Event -->
+      @if (Route::has('event'))
+      <div class="col-2 fixed-bottom">
+        <img src="img/bubble_event.png" style="width: 70%; margin-left: 560%" alt="">
+        <a href="{{ route('event') }}">
+          <img src="img/buat_event.png" style="width: 40%; margin-left: 625%" alt="">
+        </a>
+      </div>
+      @endif
+
     </div>
   </div>
-  @endsection
+</div>
+@endsection
