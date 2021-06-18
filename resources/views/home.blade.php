@@ -12,8 +12,6 @@
       @endif
       <h3 style="font-style: poppins; margin-top: 20px; font-size:120%"><b>{{$name}}</b></h3>
       <h3 style="font-style: poppins, sans-serif; margin-top: 10px; font-size:100%">{{$username}}</h3>
-      <h3 style="font-style: poppins; margin-top: 10px; font-size:100%">xx Following | xx Followers</h3>
-      <h3 style="font-style: poppins; margin-top: 20px; font-size:100%">Selebgram | Singer</h3>
     </center>
   </div>
 
@@ -33,10 +31,8 @@
               </div>
               <div class="footer">
                 <ul class="nav ">
-                  <li class="nav-item"><a class="nav-link" href="#">Tambah Foto</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Undang Orang</a></li>
                   <li class="nav-item ml-auto">
-                    <button type="submit" class="btn btn-primary ml-2 border-0" style="background-color: #FD7EC2;">Post</button>
+                    <button type="submit" class="btn btn-primary mr-4 border-0" style="background-color: #FD7EC2;">Post</button>
                   </li>
                 </ul>
               </div>
@@ -58,21 +54,6 @@
     <!-- middle bottom -->
     <div class="white-background">
       <!-- @yield('extra-content') -->
-
-      <!-- SIMPLE LAYOUT -->
-      <!-- Start Show Post Data-->
-      <!-- @foreach ($posts as $post)
-            <div class="row">
-              <div class="col-4">
-                <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-                {{ $post->users->name }}
-              </div>
-              <div class="col-8">
-                {{ $post->story }}
-              </div>
-            </div>
-        @endforeach -->
-      <!-- End Show Post Data-->
 
      <!-- Start Show Post Data DISKUSI-->
      <ul class="panel-activity__list">
@@ -121,7 +102,7 @@
 
         <form method="POST" action="{{ route('daftarEvent') }}">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <input type="text" name="events_id" value="{{ $event->id }}">
+          <input type="hidden" name="events_id" value="{{ $event->id }}">
 
           <div class="row">
             <i class="activity__list__icon fa fa-question-circle-o"></i>
@@ -145,9 +126,9 @@
           </div>
           <br>
           <div class="align-bottom">
-            <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
+            <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:grey">Tanggal: {{ $event->start_date }}</span>
             <div class="ml-auto" style="float:right;">
-              <span style="color:grey;"></i>dibuat oleh: {{$post->users->name }}
+              <span style="color:grey;"></i>dibuat oleh: {{$event->users[0]->name }}
                 <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
               </span>
             </div>
@@ -160,20 +141,6 @@
 
   </div>
 </div>
-
-<!-- right -->
-<div class="col-3 pink-background">
-  <div class="d-none d-xl-block mr-2 mt-5 right-wrapper">
-    <div class="row">
-      <div class="col-md-12 grid-margin">
-        <div class="card rounded">
-          <div class="card-body">
-            <h6 class="card-title">Trending</h6>
-            <div class="latest-photos">
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Button Buat Event -->
       @if (Route::has('event'))
