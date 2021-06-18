@@ -78,10 +78,14 @@
             @endif
           </div>
           <div class="activity__list__body entry-content">
-            <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
-            <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
           </div>
           <br>
+          <div class="container">
+            <div class="align-bottom ml-auto" style="float:right; margin-right:10px">
+              <span style="color:grey;"> <i class="fa fa-clock"></i>{{ $post->created_at }}</span>
+            </div>
+          </div>
+
           <div class="container">
             @foreach($comments as $cs)
             @if($cs->posts_id == $post->id)
@@ -129,7 +133,6 @@
             <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
             <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
           </div>
-          <br>
           <div class="align-bottom">
             <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:grey">Tanggal: {{ $event->start_date }} sampai {{ $event->end_date }}</span>
           </div>

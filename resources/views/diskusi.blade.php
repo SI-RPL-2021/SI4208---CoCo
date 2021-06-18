@@ -16,7 +16,6 @@
                 </div>
                 <div class="col-md-10">
 
-                    <button type="button" style="float:right; width:150px; width: 40px;height: 40px;border-radius: 50%;" class="btn btn-danger btn-round"><span class="glyphicon glyphicon-volume-off"></span><img src="public\img\flag.png"></button>
                     <br><br>
 
                     <p class="left">{{$post->story}}

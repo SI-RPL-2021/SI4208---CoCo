@@ -15,13 +15,13 @@
             <h3 style="font-style: poppins, sans-serif; margin-top: 10px; font-size:100%">{{$username}}</h3>
             <h3 style="font-style: poppins; margin-top: 10px; font-size:100%">{{$following}} Following | {{$follower}} Followers</h3>
             @if(!$isFollowing)
-            <form method="POST" action="{{ route('profileView.follow') }}" >
+            <form method="POST" action="{{ route('profileView.follow') }}">
                 @csrf
                 <input type="hidden" name="following_id" value="{{ $id }}">
                 <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Follow</button>
             </form>
             @else
-            <form method="POST" action="{{ route('profileView.unfollow') }}" >
+            <form method="POST" action="{{ route('profileView.unfollow') }}">
                 @csrf
                 <input type="hidden" name="following_id" value="{{ $id }}" hidden>
                 <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Unfollow</button>
@@ -75,65 +75,62 @@
                     </div>
                     <br>
                     <div class="container">
-                        <a href="#" style="color: #FD7EC2;"> <i class="fa fa-thumbs-up"></i>Like</a>
-                        <a href="#" style="color: #FD7EC2;"> <i class="fa fa-comments"></i>Comment</a>
-                        <div class="align-bottom ml-auto" style="float:right;">
-                            <span style="color:grey;"> <i class="fa fa-clock"></i>a minute ago</span>
-                        </div>
-                    </div>
-
-                </div>
-                @endforeach
-            </ul>
-            <!-- End Show Post Data-->
-            @else
-            <!-- Start Show Post Data EVENT-->
-            <ul class="panel-activity__list" id="tab-events">
-                <div class="row">
-                    @foreach ($events as $event)
-
-                    <form method="POST" action="{{ route('daftarEvent') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="events_id" value="{{ $event->id }}">
-
-                        <div class="row">
-                            <i class="activity__list__icon fa fa-question-circle-o"></i>
-                            <div class="activity__list__header container2-left">
-                                @if (Route::has('kolaborasi'))
-                                <br>
-                                <a href="{{ url('eventSaya/'.$event->id.'') }}" style="color: black; font-size:large;">
-                                    {{ $event->event_name }}
-                                </a>
-                            </div>
-                            <div class='container2-right'>
-                                <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Daftar</button>
-                            </div>
-                    </form>
-                    @endif
-
-                    <div>
-                        <div class="activity__list__body entry-content">
-                        </div>
-                        <br>
-                        <div class="align-bottom">
-                            <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
-                            <div class="ml-auto" style="float:right;">
-                                <span style="color:grey;"></i>dibuat oleh: {{$event->users->name }}
-                                    <img src="{{ url('displayImage/'.$event->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-                                </span>
-                            </div>
+                        <div class="align-bottom ml-auto" style="float:right; margin-right:10px">
+                            <span style="color:grey;"> <i class="fa fa-clock"></i>{{ $post->created_at }}</span>
                         </div>
                     </div>
                 </div>
-                @endforeach
-
-            </ul>
-            @endif
-
-            <!-- End Show Post Data-->
 
         </div>
+        @endforeach
+        </ul>
+        <!-- End Show Post Data-->
+        @else
+        <!-- Start Show Post Data EVENT-->
+
+        <ul class="panel-activity__list">
+            @foreach ($events as $event)
+
+            <form method="POST" action="{{ route('daftarEvent') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="events_id" value="{{ $event->id }}">
+
+                <div class="row">
+                    <i class="activity__list__icon fa fa-question-circle-o"></i>
+                    <div class="activity__list__header container2-left">
+                        @if (Route::has('kolaborasi'))
+                        <br>
+                        <a href="{{route('kolaborasi', $event->id)}}" style="color: black; font-size:large;">
+                            {{ $event->event_name }}
+                        </a>
+                    </div>
+                    <div class='container2-right'>
+                    </div>
+            </form>
+            @endif
+
+            <div>
+                <div class="activity__list__body entry-content">
+                    <!-- <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
+            <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em> -->
+                </div>
+                <div class="align-bottom">
+                    <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:grey">Tanggal: {{ $event->start_date }} sampai {{ $event->end_date }}</span>
+                </div>
+                <div class="mr-auto" style="float:left;">
+                    <span style="color:grey;"></i>dibuat oleh: {{$event->users->name }}
+                        <img src="{{ url('displayImage/'.$event->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                    </span>
+                </div>
+            </div>
     </div>
+    @endforeach
+    </ul>
+    @endif
+    <!-- End Show Post Data-->
+
+</div>
+</div>
 
 </div>
 </div>
