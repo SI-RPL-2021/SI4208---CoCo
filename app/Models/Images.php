@@ -19,6 +19,8 @@ class Images extends Model
         'url',
     ];
     
+    public $timestamps = false;
+    
     public function __construct()
     {
         

@@ -39,38 +39,56 @@ class Users extends Authenticatable
 
     public function __construct()
     {
-        
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->hasOne('App\Models\Images');
     }
 
-    public function profile() {
-        return $this->hasMany('App\Models\Users','id');
+    public function profile()
+    {
+        return $this->hasMany('App\Models\Users', 'id');
     }
 
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany('App\Models\Posts');
     }
 
-    public function tags() {
+    public function tags()
+    {
         return $this->belongsTo('App\Models\Tags');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->belongsTo('App\Models\Comments');
     }
 
-    public function events() {
+    public function events()
+    {
         return $this->belongsTo('App\Models\Events');
     }
 
-    public function events_tags() {
-        return $this->belongsTo('App\Models\Events_Tags');
+    public function eventsTags()
+    {
+        return $this->hasMany(EventsTags::class);
     }
 
-    public function events_comments() {
+    public function events_comments()
+    {
         return $this->belongsTo('App\Models\Comments');
     }
+
+    // users that are followed by this user
+    public function following() {
+        return $this->belongsToMany(Users::class, 'follows', 'follower_id', 'following_id');
+    }
+
+    // users that follow this user
+    public function followers() {
+        return $this->belongsToMany(Users::class, 'follows', 'following_id', 'follower_id');
+    }
+
 }

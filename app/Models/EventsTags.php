@@ -20,6 +20,8 @@ class EventsTags extends Model
     protected $fillable = [
         'events_id',
         'users_id',
+        'created_at',
+        'updated_at'
     ];
 
     public function __construct()
@@ -27,11 +29,19 @@ class EventsTags extends Model
         
     }
 
+    // public function events() {
+    //     return $this->hasMany('App\Models\Events','id');
+    // }
+
+    // public function users() {
+    //     return $this->hasMany('App\Models\Users');
+    // }
+
     public function events() {
-        return $this->hasMany('App\Models\Events','id');
+        return $this->belongsTo('App\Models\Events');
     }
 
     public function users() {
-        return $this->hasMany('App\Models\Users','id');
+        return $this->belongsTo('App\Models\Users');
     }
 }

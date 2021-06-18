@@ -53,11 +53,6 @@
                     </select> -->
                     <!-- UNDANG TEMAN -->
                     <br>
-                    <a href="#">
-                        <img src="\img\undang-teman.png" alt="undangTeman" style="width: 40px; height:auto; margin-left:15px;margin-right:20px">
-                    </a>
-                    <label for="inputJudul" class="form-label"><b>Undang Teman...</b></label>
-                    <br>
                     <br>
                     <button type="submit" class="btn" style="float: right; background-color:#F57ABC; color:white;"><b>Buat</b></button>
                 </form>

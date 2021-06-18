@@ -41,11 +41,11 @@ class Events extends Model
     }
 
     public function comments() {
-        return $this->belongsTo('App\Models\Events_Comments');
+        return $this->belongsTo('App\Models\EventsComments');
     }
 
-    public function tags() {
-        return $this->belongsTo('App\Models\Events_Tags');
+    public function events_tags() {
+        return $this->belongsTo('App\Models\EventsTags');
     }
 
 }

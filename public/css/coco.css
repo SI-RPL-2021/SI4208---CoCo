@@ -169,12 +169,19 @@ body {
     margin-left: 5px;
     margin-right: 5px;
 }
+
 .media .avatar {
-  width: 32px;
+    width: 32px;
 }
+
 .shadow-textarea textarea.form-control::placeholder {
-  font-weight: 75;
+    font-weight: 75;
 }
+
 .shadow-textarea textarea.form-control {
-  padding-left: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.dropdown-item-custom {
+    white-space: normal !important;
 }
