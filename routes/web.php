@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileViewController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportMgtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,7 +143,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+    Route::get('/report_mgt', [ReportMgtController::class, 'index'])->name('report_mgt');
 
+    Route::post('/report', [ReportController::class, 'report'])->name('report');;
 
 
     //report content

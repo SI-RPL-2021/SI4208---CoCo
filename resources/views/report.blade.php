@@ -23,14 +23,15 @@
 <body>
     <div class = "form-container">
         <center><h1>Laporkan Akun</h1></center>
-        <form action="">
+        <form method="POST" action="/report">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
-                <label for="nama_akun">nama akun</label>
-                <input type="text" class="form-control" id="nama_akun" placeholder="">
+                <label for="nama">nama akun</label>
+                <input type="text" class="form-control" name="nama">
             </div>
             <div class="form-group">
                 <label for="konten">isi konten yang dilaporkan</label>
-                <textarea  class="form-control" id="konten" placeholder=""></textarea>
+                <textarea  class="form-control" name="konten" placeholder=""></textarea>
             </div>
             <button type="submit" class="btn" style="float: right; background-color:#F57ABC; color:white;"><b>Kirim</b></button>
         </form>
