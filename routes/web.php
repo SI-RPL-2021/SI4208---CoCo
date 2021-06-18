@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\LoginController;
@@ -6,9 +7,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Auth\DeleteController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventSayaController;
 use App\Http\Controllers\USerChartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileViewController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Support\Facades\Route;
@@ -70,15 +73,27 @@ Route::group(['middleware' => 'auth'], function () {
     // Event Controller
     Route::get('/event', [EventController::class, 'index'])->name('event');
     Route::post('/newEvent', [EventController::class, 'newEvent'])->name('newEvent');
-    // Route::get('/eventSaya', [EventController::class, 'eventSaya'])->name('eventSaya');
+    Route::get(
+        '/eventSaya/{id}',
+        [EventSayaController::class, 'index']
+    )->whereNumber('id')->name('eventSaya');
+    Route::post('/eventSaya/accept', [EventSayaController::class, 'acceptTags'])->name('eventSaya.accept');
+    Route::post('/eventSaya/decline', [EventSayaController::class, 'declineTags'])->name('eventSaya.decline');
 
     // Profile Controller
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/profileView/{id}', [ProfileViewController::class, 'redirectProfileView'])->whereNumber('id')->name('profileView');
+    Route::get('/profileView/diskusi/{id}', [ProfileViewController::class, 'profileView'])->whereNumber('id')->name('profileView.diskusi');
+    Route::get('/profileView/event/{id}', [ProfileViewController::class, 'profileViewEvent'])->whereNumber('id')->name('profileView.event');
 
     // Chat Controller
     Route::get('/chat', [ChatController::class, 'inbox'])->name('chat');
     Route::post('/inbox', [ChatController::class, 'inbox'])->name('inbox');
+
+    // Follows
+    Route::post('/profileView/follow', [ProfileViewController::class, 'follow'])->name('profileView.follow');
+    Route::post('/profileView/unfollow', [ProfileViewController::class, 'unfollow'])->name('profileView.unfollow');
 
     // Route::get('/admin', function () {
     //     return view('/admin/landing_admin');
@@ -132,5 +147,4 @@ Route::group(['middleware' => 'auth'], function () {
 
     //report content
     Route::get('/report', [ReportController::class, 'index'])->name('report');
-
 });

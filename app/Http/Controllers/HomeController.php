@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function index() {
+    public function index()
+    {
         $users = Users::all();
         $user = Auth::user();
         $name = $user['name'];
@@ -42,18 +44,19 @@ class HomeController extends Controller
         ]);
     }
 
-    public function displayImage($id) {
+    public function displayImage($id)
+    {
         $image = DB::table('images')
-                    ->where('id','=',$id)
-                    ->get();
+            ->where('id', '=', $id)
+            ->get();
         $path = $image[0]->url;
-        return Storage::get('public/'.$path);
+        return Storage::get('public/' . $path);
     }
     public function deleteComment(Request $request)
     {
         $comment = Comments::find($request->id);
         $comment->delete();
-        
+
         return redirect()->back();
     }
 
@@ -97,7 +100,8 @@ class HomeController extends Controller
         $user_id = $user['id'];
         return view('kolaborasi', compact('event', 'comments', 'users', 'user_id'));
     }
-    public function newPost(Request $request) {
+    public function newPost(Request $request)
+    {
         $user = Auth::user();
         $post = new Posts;
         $post->story = $request['story'];
@@ -107,22 +111,23 @@ class HomeController extends Controller
         return redirect('home');
     }
 
-    public function daftarEvent(Request $request){
+    public function daftarEvent(Request $request)
+    {
         $user = Auth::user();
-        // $events = Events::all();
         $events_tags = new EventsTags;
         $events_tags->events_id = $request['events_id'];
         $events_tags->users_id = $user['id'];
         $events_tags->save();
-
-        // return redirect('home');
-        // echo @event('id');
-        // echo $request['events_id'];
-        echo "Daftar sukses";
+ 
+        echo '<script language="javascript">';
+        echo 'alert("Daftar Kolaborasi Sukses!")';
+        echo '</script>';
+        return redirect('home');
     }
 
 
-    public function getAllPost() {
+    public function getAllPost()
+    {
         $posts = Posts::all();
         return $posts;
     }

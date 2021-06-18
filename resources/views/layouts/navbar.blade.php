@@ -40,6 +40,27 @@
                     <ul class="navbar-nav ml-auto" style="margin-right: 20px;">
                         @if (Auth::user())
                         <li class="nav-item">
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle border-0" href="{{ route('home') }}" style="background: transparent;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="/img/notif-icon.png" alt="notification" width="20px"></span></a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    @inject('notif', 'App\Http\Controllers\NotificationController')
+                                    <?php
+                                    $notif = $notif->getNotification();
+                                    if (count($notif) > 0) {
+                                        foreach ($notif as $n) {
+                                            echo "<div class='dropdown-item' style='white-space:normal !important; width:100%'>" . $notif[0]->description . "</div>";
+                                        }
+                                    } else {
+                                        echo "<div class='dropdown-item' style='white-space:normal !important; width:100%; color:grey'>Tidak ada notifikasi.</div>";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Beranda -->
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}" style="color: #FFF2F9; font-weight :600">Beranda</span></a>
                         </li>
                         @else
@@ -67,8 +88,6 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Route::has('profile'))
                                 <a class="dropdown-item" style="color: #FD7EC2; font-weight :600" href="{{ route('profile') }}">
@@ -77,9 +96,6 @@
                                 @endif
                                 <a class="dropdown-item" style="color: #FD7EC2; font-weight :600" href="{{ route('logout') }}">
                                     {{ __('Logout') }}
-                                </a>
-                                <a class="dropdown-item" style="color: #FD7EC2; font-weight :600" href="{{ route('logout') }}">
-                                    {{ __('Report') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
