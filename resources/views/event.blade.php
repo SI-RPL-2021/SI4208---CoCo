@@ -14,12 +14,10 @@
                 <form method="POST" action="{{ route('newEvent') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <!-- INSERT PHOTO -->
-                    <div class="image-event">
-                        <a href="#">
-                            <img name="image" src="img/event_photo.png" alt="insert_photo">
-                        </a>
-                        <br>
-                    </div>
+                    <br>
+                    <label for="inputJudul" class="form-label"><b>Upload Foto Event Kolaborasi</b></label>
+                    <input name="newImage" class="form-control" id="formFileSm" type="file" />
+                    <br>
                     <!-- JUDUL EVENT -->
                     <label for="inputJudul" class="form-label"><b>Judul Event Kolaborasi</b></label>
                     <input name="event_name" type="text" id="inputJudul" class="form-control" aria-describedby="" placeholder="Masukkan Judul Event Disini...">

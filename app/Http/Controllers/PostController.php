@@ -19,7 +19,8 @@ class PostController extends Controller
         $user_id = $user['id'];
         return view('diskusi', [
             'post' => $post,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'image' => $user['image_id']
         ]);
     }
 

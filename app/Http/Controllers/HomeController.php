@@ -27,6 +27,7 @@ class HomeController extends Controller
         return Redirect::to("/index/diskusi/");
     }
 
+    
 
     public function index()
     {
@@ -84,6 +85,7 @@ class HomeController extends Controller
         $path = $image[0]->url;
         return Storage::get('public/' . $path);
     }
+
     public function deleteComment(Request $request)
     {
         $comment = Comments::find($request->id);

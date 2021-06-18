@@ -12,7 +12,7 @@
         <div class="container-3" style="background-color: #FFFFFF;">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="public\img\mentalhealth.jpg">
+                    <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 120px; height: 120px; margin-top: 50px" alt="">
                 </div>
                 <div class="col-md-10">
 

@@ -55,6 +55,8 @@ Route::get('/kolaborasi/{id}', [HomeController::class, 'kolaborasi'])->whereNumb
 Route::post('/newComment_event', [HomeController::class, 'newComment_event'])->whereNumber('id')->name('newComment_event');
 Route::post('/deleteComment_event', [HomeController::class, 'deleteComment_event'])->whereNumber('id')->name('deleteComment_event');
 
+Route::post('/deleteComment', [HomeController::class, 'deleteComment'])->whereNumber('id')->name('deleteComment');
+
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');;
