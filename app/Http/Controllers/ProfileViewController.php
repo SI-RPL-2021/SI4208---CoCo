@@ -102,4 +102,12 @@ class ProfileViewController extends Controller
                         ->orderBy('updated_at', 'DESC')->get();
         return $events;
     }
+ 	public function follow(Request $request)
+    {
+        $following_id = $request-input('following_id');
+        $idUser = Authuser()-id;
+        $user = Usersfind($idUser);
+        $user-following()-attach($following_id);
+        return $this-profileView($following_id);
+    }
 }
