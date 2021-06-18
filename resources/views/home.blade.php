@@ -62,7 +62,7 @@
           <i class="activity__list__icon fa fa-question-circle-o"></i>
           <div class="activity__list__header">
             <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-            <a href="#" style="color: #FD7EC2; font-size:medium">{{$post->users->name }}</a>
+            <a href="{{ url('profileView/'.$post->users->id.'')}}" style="color: #FD7EC2; font-size:medium">{{$post->users->name }}</a>
             @if (Route::has('diskusi'))
             <br>
             <a href="{{ url('diskusi/'.$post->id) }}" style="color: black; font-size:large;">
@@ -76,7 +76,6 @@
           </div>
           <br>
           <div class="container">
-            <a href="#" style="color: #FD7EC2;"> <i class="fa fa-thumbs-up"></i>Like</a>
             @foreach($comments as $cs)
             @if($cs->posts_id == $post->id)
             @foreach($users as $us)
