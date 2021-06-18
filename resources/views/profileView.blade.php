@@ -98,9 +98,9 @@
                 <div class="row">
                     <i class="activity__list__icon fa fa-question-circle-o"></i>
                     <div class="activity__list__header container2-left">
-                        @if (Route::has('kolaborasi'))
+                        @if (Route::has('eventSaya'))
                         <br>
-                        <a href="{{route('kolaborasi', $event->id)}}" style="color: black; font-size:large;">
+                        <a href="{{route('eventSaya', $event->id)}}" style="color: black; font-size:large;">
                             {{ $event->event_name }}
                         </a>
                     </div>
