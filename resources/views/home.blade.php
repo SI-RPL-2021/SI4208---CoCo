@@ -106,22 +106,7 @@
             @endforeach
             @endif
             @endforeach
-            <!-- <p>{{$cs->comments}}</p> -->
-            <!-- <form action="{{route('newComment')}}" method="post">
-              @csrf
-              <input type="hidden" name="user_id" value="{{$user_id}}">
-              <input type="hidden" name="id" value="{{$post->id}}">
-              <input type="text" id="" name="comments" class="form-control mr-2" placeholder="Comment..">
-              <div class='text-right'>
-                <button type="submit" class="btn btn-primary mt-4" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Comment</button>
-              </div>
-            </form> -->
-            <!-- <a href="#" style="color: #FD7EC2;"> <i class="fa fa-comments"></i>Comment</a> -->
-            <!-- <div class="align-bottom ml-auto" style="float:right;">
-              <span style="color:grey;"> <i class="fa fa-clock"></i>a minute ago</span>
-            </div> -->
           </div>
-
         </div>
         @endforeach
       </ul>
