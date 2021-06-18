@@ -55,7 +55,8 @@
     <div class="container-main">
     <center><h1 style="font-family: 'Courier New', Courier, monospace;font-weight:500; margin-top : 200px">Selamat datang</h1>
     <a href="{{ route('user_mgt') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px; margin-right:30px">{{ __('User Management') }}</a>
-    <a href="{{ route('report_mgt') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px; margin-right:30px">{{ __('Post Management') }}</a>
+    <a href="{{ route('content_mgt') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px; margin-right:30px">{{ __('Post Management') }}</a>
+    <a href="{{ route('report_mgt') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px; margin-right:30px">{{ __('Report Management') }}</a>
     <a href="{{ route('dashboard') }}" style="font-family: 'Courier New', Courier, monospace;font-size : 21px;">{{ __('Dashboard') }}</a>
     </center>
     </div>

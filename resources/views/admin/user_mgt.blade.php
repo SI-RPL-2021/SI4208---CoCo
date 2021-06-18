@@ -103,9 +103,6 @@
         </div>
         </div>
         <div style="padding:2%">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-            Add User
-            </button>
             <table class="table" style="margin-top:20px">
                 <thead class="thead-dark">
                     <tr>

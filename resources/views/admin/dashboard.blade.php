@@ -48,12 +48,10 @@
 
     @foreach($post as $key => $data)
         {{$hasil = $data->jumlah}}
-        {{$hasil}}
     @endforeach
 
     @foreach($user as $key => $data)
         {{$hasil1 = $data->jumlah1}}
-        {{$hasil1}}
     @endforeach
     
 
