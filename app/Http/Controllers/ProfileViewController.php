@@ -107,11 +107,11 @@ class ProfileViewController extends Controller
     }
     public function follow(Request $request)
     {
-        $following_id = $request - input('following_id');
-        $idUser = Authuser() - id;
-        $user = Usersfind($idUser);
-        $user - following() - attach($following_id);
-        return $this - profileView($following_id);
+        $following_id = $request->input('following_id');
+        $idUser = Auth::user()->id;
+        $user = Users::find($idUser);
+        $user->following()->attach($following_id);
+        return $this->profileView($following_id);
     }
     public function unfollow(Request $request)
     {
