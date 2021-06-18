@@ -18,7 +18,7 @@
                     <font style=font-size:large;font-weight:bolder;>{{$event->event_name}}</font>
                     <button style="float:right; width:150px; background-color:#FD7EC2; color:#FFF2F9;" class="btn btn-pink" type="button">Ikut Kolaborasi</button>
                     <br><br>
-                    <font style=float:right;font-size:small;font-weight:bolder;color:#A9A9A9>Kapisatas : {{$event->capacity}} Orang</font>
+                    <font style=float:right;font-size:small;font-weight:bolder;color:#A9A9A9>Kapasitas : {{$event->capacity}} Orang</font>
                     <br>
                     <p>{{$event->description}}</p>
                     <p1 class="left" style=color:#FD7EC2>Tanggal pelaksanaan : {{$event->start_date}} - {{$event->end_date}}

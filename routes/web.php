@@ -51,9 +51,10 @@ Route::get('/eventDetail', function () {
 // post detail
 Route::get('/diskusi/{id}', "PostController@detail")->name('diskusi');
 
-Route::get('/kolaborasi', function () {
-    return view('kolaborasi');
-})->name('kolaborasi');
+Route::get('/kolaborasi/{id}', [HomeController::class, 'kolaborasi'])->whereNumber('id')->name('kolaborasi');
+Route::post('/newComment_event', [HomeController::class, 'newComment_event'])->whereNumber('id')->name('newComment_event');
+Route::post('/deleteComment_event', [HomeController::class, 'deleteComment_event'])->whereNumber('id')->name('deleteComment_event');
+
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');;
@@ -70,6 +71,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/displayImage/{id}', [HomeController::class, 'displayImage'])->whereNumber('id')->name('displayImage');
     Route::post('/newPost', [HomeController::class, 'newPost'])->name('newPost');
     Route::post('/daftarEvent', [HomeController::class, 'daftarEvent'])->name('daftarEvent');
+    Route::get('/home/diskusi', [HomeController::class, 'index'])->name('profileView.diskusi');
+    Route::get('/home/event', [HomeController::class, 'indexEvent'])->name('profileView.event');
 
     // Event Controller
     Route::get('/event', [EventController::class, 'index'])->name('event');

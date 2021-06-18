@@ -45,9 +45,15 @@
 
     <div class="row">
       <section class="container">
+
         <ul class="nav nav-tabs pt-5">
-          <li class="nav-item"><a class="nav-link active" href="#">Diskusi</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+          @if($isDiskusi)
+          <li class="nav-item"><a class="nav-link active" href="{{ url('home/diskusi') }}" id="btn-diskusi">Diskusi</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('home/event') }}">Events</a></li>
+          @else
+          <li class="nav-item"><a class="nav-link" href="{{ url('home/diskusi') }}" id="btn-diskusi">Diskusi</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{{ url('home/event') }}">Events</a></li>
+          @endif
         </ul>
       </section>
     </div>
@@ -55,8 +61,9 @@
     <div class="white-background">
       <!-- @yield('extra-content') -->
 
-     <!-- Start Show Post Data DISKUSI-->
-     <ul class="panel-activity__list">
+      <!-- Start Show Post Data DISKUSI-->
+      @if($isDiskusi)
+      <ul class="panel-activity__list">
         @foreach ($posts as $post)
         <div class="row">
           <i class="activity__list__icon fa fa-question-circle-o"></i>
@@ -90,11 +97,10 @@
         </div>
         @endforeach
       </ul>
+      @else
       <!-- End Show Post Data-->
 
       <!-- Start Show Post Data EVENT-->
-
-
 
       <ul class="panel-activity__list">
         @foreach ($events as $event)
@@ -128,7 +134,7 @@
             <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:grey">Tanggal: {{ $event->start_date }}</span>
             <div class="ml-auto" style="float:right;">
               <span style="color:grey;"></i>dibuat oleh: {{$event->users[0]->name }}
-                <img src="{{ url('displayImage/'.$post->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                <img src="{{ url('displayImage/'.$event->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
               </span>
             </div>
           </div>
@@ -136,22 +142,23 @@
     </div>
     @endforeach
     </ul>
+    @endif
     <!-- End Show Post Data-->
 
   </div>
 </div>
 
-      <!-- Button Buat Event -->
-      @if (Route::has('event'))
-      <div class="col-2 fixed-bottom">
-        <img src="img/bubble_event.png" style="width: 70%; margin-left: 560%" alt="">
-        <a href="{{ route('event') }}">
-          <img src="img/buat_event.png" style="width: 40%; margin-left: 625%" alt="">
-        </a>
-      </div>
-      @endif
+<!-- Button Buat Event -->
+@if (Route::has('event'))
+<div class="col-2 fixed-bottom">
+  <img src="img/bubble_event.png" style="width: 70%; margin-left: 560%" alt="">
+  <a href="{{ route('event') }}">
+    <img src="img/buat_event.png" style="width: 40%; margin-left: 625%" alt="">
+  </a>
+</div>
+@endif
 
-    </div>
-  </div>
+</div>
+</div>
 </div>
 @endsection

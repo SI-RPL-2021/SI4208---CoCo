@@ -12,6 +12,7 @@ use Hamcrest\Core\Every;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -20,6 +21,12 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function redirectIndexEvent()
+    {
+        return Redirect::to("/index/diskusi/");
+    }
+
 
     public function index()
     {
@@ -40,7 +47,32 @@ class HomeController extends Controller
             'events' => $events,
             'comments' => $comments,
             'users' => $users,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'isDiskusi' => true
+        ]);
+    }
+
+    public function indexEvent()
+    {
+        $users = Users::all();
+        $user = Auth::user();
+        $name = $user['name'];
+        $user_id = $user['id'];
+        $username = $user['username'];
+        $image = $user['images_id'];
+        $posts = $this->getAllPost();
+        $events = $this->getAllEvents();
+        $comments = Comments::all();
+        return view('home', [
+            'name' => $name,
+            'username' => $username,
+            'image' => $image,
+            'posts' => $posts,
+            'events' => $events,
+            'comments' => $comments,
+            'users' => $users,
+            'user_id' => $user_id,
+            'isDiskusi' => false
         ]);
     }
 
@@ -98,8 +130,10 @@ class HomeController extends Controller
         $users = Users::all();
         $user = Auth::user();
         $user_id = $user['id'];
+        // echo $event;
         return view('kolaborasi', compact('event', 'comments', 'users', 'user_id'));
     }
+
     public function newPost(Request $request)
     {
         $user = Auth::user();
