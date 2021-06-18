@@ -116,11 +116,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('deletep-records', 'PostDeleteController@index');
     Route::get('deletep/{id}', 'PostDeleteController@destroy');
 
-    Route::get('/report_mgt', function () {
+    Route::get('/content_mgt', function () {
         $post = DB::table('posts')->get();
-        return view('/admin/report_mgt', ['post' => $post]);
-        return view('admin/report_mgt');
-    })->name('report_mgt');
+        return view('/admin/content_mgt', ['post' => $post]);
+        return view('admin/content_mgt');
+    })->name('content_mgt');
 
     // comment post
     Route::post('/diskusi/{id}/comment', "PostController@comment");

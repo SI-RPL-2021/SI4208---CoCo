@@ -16,7 +16,7 @@ class PostDeleteController extends Controller
     public function destroy($id) {
         DB::delete('delete from posts where id = ?',[$id]);
         echo "Post deleted successfully.<br/>";
-        echo '<a href = "/report_mgt">Click Here</a> to go back.';
+        echo '<a href = "/content_mgt">Click Here</a> to go back.';
     }
 
 }
