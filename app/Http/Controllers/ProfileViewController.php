@@ -19,12 +19,14 @@ class ProfileViewController extends Controller
         $this->middleware('auth');
     }
 
-    public function redirectProfileView($id){
-        return Redirect::to("/profileView/diskusi/".$id);
+    public function redirectProfileView($id)
+    {
+        return Redirect::to("/profileView/diskusi/" . $id);
     }
 
-    public function profileView($id) {
-        $user = Users::where('id','=',$id)->first();
+    public function profileView($id)
+    {
+        $user = Users::where('id', '=', $id)->first();
         $id = $user['id'];
         $name = $user['name'];
         $username = $user['username'];
@@ -36,8 +38,8 @@ class ProfileViewController extends Controller
 
         $userId = Auth::user()->id;
         $is_following = Follows::where('follower_id', '=', $userId)
-                                ->where('following_id', '=', $id)->first() ||
-                        $id == Auth::user()->id? true:false;
+            ->where('following_id', '=', $id)->first() ||
+            $id == Auth::user()->id ? true : false;
         return view('profileView', [
             'name' => $name,
             'username' => $username,
@@ -51,8 +53,9 @@ class ProfileViewController extends Controller
         ]);
     }
 
-    public function profileViewEvent($id) {
-        $user = Users::where('id','=',$id)->first();
+    public function profileViewEvent($id)
+    {
+        $user = Users::where('id', '=', $id)->first();
         $id = $user['id'];
         $name = $user['name'];
         $username = $user['username'];
@@ -64,8 +67,8 @@ class ProfileViewController extends Controller
 
         $userId = Auth::user()->id;
         $is_following = Follows::where('follower_id', '=', $userId)
-                                ->where('following_id', '=', $id)->first() ||
-                        $id == Auth::user()->id? true:false;
+            ->where('following_id', '=', $id)->first() ||
+            $id == Auth::user()->id ? true : false;
         return view('profileView', [
             'name' => $name,
             'username' => $username,
@@ -91,7 +94,7 @@ class ProfileViewController extends Controller
     public function getPostById($id)
     {
         $posts = Posts::where('users_id', '=', $id)
-                        ->orderBy('updated_at', 'DESC')->get();
+            ->orderBy('updated_at', 'DESC')->get();
 
         return $posts;
     }
@@ -99,15 +102,23 @@ class ProfileViewController extends Controller
     public function getEventsById($id)
     {
         $events = Events::where('users_id', '=', $id)
-                        ->orderBy('updated_at', 'DESC')->get();
+            ->orderBy('updated_at', 'DESC')->get();
         return $events;
     }
- 	public function follow(Request $request)
+    public function follow(Request $request)
     {
-        $following_id = $request-input('following_id');
-        $idUser = Authuser()-id;
+        $following_id = $request - input('following_id');
+        $idUser = Authuser() - id;
         $user = Usersfind($idUser);
-        $user-following()-attach($following_id);
-        return $this-profileView($following_id);
+        $user - following() - attach($following_id);
+        return $this - profileView($following_id);
+    }
+    public function unfollow(Request $request)
+    {
+        $following_id = $request->input('following_id');
+        $idUser = Auth::user()->id;
+        $user = Users::find($idUser);
+        $user->following()->detach($following_id);
+        return $this->profileView($following_id);
     }
 }
