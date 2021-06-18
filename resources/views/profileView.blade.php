@@ -118,8 +118,8 @@
                         <div class="align-bottom">
                             <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Tanggal:</span>
                             <div class="ml-auto" style="float:right;">
-                                <span style="color:grey;"></i>dibuat oleh: {{$event->users[0]->name }}
-                                    <img src="{{ url('displayImage/'.$event->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+                                <span style="color:grey;"></i>dibuat oleh: {{$event->users->name }}
+                                    <img src="{{ url('displayImage/'.$event->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
                                 </span>
                             </div>
                         </div>
