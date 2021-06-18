@@ -119,7 +119,7 @@
               </a>
             </div>
             <div class='container2-right'>
-              <button type="submit" class="btn btn-primary ml-2" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink">Daftar</button>
+              <button type="submit" class="btn btn-primary mt-4 float-right" style="background-color: #FFFFFF; color: #FD7EC2; border-color:hotpink; margin-right:40px">Daftar</button>
             </div>
         </form>
         @endif
@@ -131,12 +131,12 @@
           </div>
           <br>
           <div class="align-bottom">
-            <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:grey">Tanggal: {{ $event->start_date }}</span>
-            <div class="ml-auto" style="float:right;">
-              <span style="color:grey;"></i>dibuat oleh: {{$event->users[0]->name }}
-                <img src="{{ url('displayImage/'.$event->users[0]->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
-              </span>
-            </div>
+            <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:grey">Tanggal: {{ $event->start_date }} sampai {{ $event->end_date }}</span>
+          </div>
+          <div class="mr-auto" style="float:left;">
+            <span style="color:grey;"></i>dibuat oleh: {{$event->users->name }}
+              <img src="{{ url('displayImage/'.$event->users->images_id.'')}}" style="width: 30px; height: 30px; margin:2px" alt="">
+            </span>
           </div>
         </div>
     </div>

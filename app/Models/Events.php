@@ -37,11 +37,11 @@ class Events extends Model
     }
 
     public function users() {
-        return $this->hasMany('App\Models\Users','id');
+        return $this->belongsTo('App\Models\Users');
     }
 
     public function comments() {
-        return $this->belongsTo('App\Models\EventsComments');
+        return $this->hasMany('App\Models\EventsComments');
     }
 
     public function events_tags() {

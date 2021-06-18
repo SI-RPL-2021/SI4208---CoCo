@@ -64,6 +64,9 @@ class HomeController extends Controller
         $posts = $this->getAllPost();
         $events = $this->getAllEvents();
         $comments = Comments::all();
+        // foreach($events as $e) {
+        //     echo $e->users;
+        // }
         return view('home', [
             'name' => $name,
             'username' => $username,

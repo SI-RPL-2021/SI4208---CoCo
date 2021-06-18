@@ -11,20 +11,20 @@
         <!-- INSERT PHOTO HERE -->
         <div class="container-3" style="background-color: #FFFFFF;">
             <div class="col-auto">
-                <form method="POST" action="{{ route('newEvent') }}">
+                <form method="POST" action="{{ route('newEvent') }}" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <!-- INSERT PHOTO -->
                     <br>
-                    <label for="inputJudul" class="form-label"><b>Upload Foto Event Kolaborasi</b></label>
-                    <input name="newImage" class="form-control" id="formFileSm" type="file" />
+                    <label for="formFileSm" class="form-label"><b>Upload Foto Event Kolaborasi</b></label>
+                    <input name="newImage" class="form-control" id="formFileSm" type="file" required/>
                     <br>
                     <!-- JUDUL EVENT -->
                     <label for="inputJudul" class="form-label"><b>Judul Event Kolaborasi</b></label>
-                    <input name="event_name" type="text" id="inputJudul" class="form-control" aria-describedby="" placeholder="Masukkan Judul Event Disini...">
+                    <input name="event_name" type="text" id="inputJudul" class="form-control" aria-describedby="" placeholder="Masukkan Judul Event Disini..." required>
                     <br>
                     <!-- DESKRIPSI EVENT -->
                     <label for="inputJudul" class="form-label"><b>Deskripsi Event Kolaborasi</b></label>
-                    <textarea name="description" id="inputDeskripsi" class="form-control" rows="5" placeholder="Masukkan Deskripsi Event Disini..."></textarea>
+                    <textarea name="description" id="inputDeskripsi" class="form-control" rows="5" placeholder="Masukkan Deskripsi Event Disini..." required></textarea>
                     <br>
                     <!-- TANGGAL EVENT -->
                     <label for="inputJudul" class="form-label"><b>Tanggal Event</b></label>
@@ -36,9 +36,9 @@
                     </div>
                     <br>
                     <!-- KAPASITAS TEAM KOLABORASI -->
-                    <label for="inputJudul" class="form-label"><b>Kapasitas Team Event</b></label>
+                    <label for="inputJudul" class="form-label" required><b>Kapasitas Team Event</b></label>
                     <div class="input-group">
-                        <input name="capacity" type="text" id="inputKapasitas" class="form-control" aria-describedby="" placeholder="">
+                        <input name="capacity" type="text" id="inputKapasitas" class="form-control" aria-describedby="" placeholder="" required>
                         <span class="input-group-text" id="basic-addon2">Orang</span>
                     </div>
                     <br>

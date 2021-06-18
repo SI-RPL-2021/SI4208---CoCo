@@ -29,21 +29,21 @@ class EventController extends Controller
     {
         $user = Auth::user();
         $event = new Events;
+        if ($request->newImage) {
+            $newImage = $request->newImage;
+            $imageName = time() . '' . $newImage->getClientOriginalName();
+            $newImage->storeAs('public/', $imageName);
+            $image = new Images();
+            $image->url = '/' . $imageName;
+            $image->save();
+            $event->images_id = $image->id;
+        }
         $event->event_name = $request['event_name'];
         $event->description = $request['description'];
         $event->start_date = $request['start_date'];
         $event->end_date = $request['end_date'];
         $event->capacity = $request['capacity'];
-
         $event->users_id = $user['id'];
-        if ($request->newImage) {
-            $newImage = $request->newImage;
-            $imageName = time() . '' . $newImage->getClientOriginalName();
-            $newImage->storeAs('public/profile-images/', $imageName);
-            $image = new Images();
-            $image->url = 'profile-images/' . $imageName;
-            $image->save();
-        }
         $event->save();
         return redirect('home');
     }
